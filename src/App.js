@@ -22,7 +22,6 @@ class App extends React.Component {
     // toggle the boolean operator on the purchased property
 
     const banana = this.state.taskList.map(task => {
-      
       if (task.idNumber === idNumber) {
         return {
           ...task,
@@ -31,16 +30,27 @@ class App extends React.Component {
       } else {
         return task;
       }
-
     })
 
     this.setState({taskList: banana})
 
-  }
+  };
+
+  clearCompleted = event => {
+    /// loop through this.state.taskList
+    // find the items that have className="completed"
+    // filter them from taskList and return new array without them
+    console.log('is this working')
+    event.preventDefault();
+
+    this.setState({
+      taskList: this.state.taskList.filter(task => !task.completed)
+    });
+  };
 
   addTask = taskName => {
     // check for empty input and return alert if blank
-    if(!taskName) return alert("enter todo plz")
+    // if(!taskName) return alert("enter todo plz")
     // add an task from the form to the list
     const newTask = {
       taskName,
@@ -63,7 +73,10 @@ class App extends React.Component {
           taskList={this.state.taskList}
           toggleItem={this.toggleItem}
           />
-      <TodoForm addTask={this.addTask}/>
+      <TodoForm 
+      addTask={this.addTask}
+      clearCompleted={this.clearCompleted}
+      />
       </div>
     );
   }

@@ -29,17 +29,19 @@ class TodoForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.addTask}>
+            <div>
+
+            <form onSubmit={this.addTask} className="todo-form">
                 <input
                     placeholder="task name"
                     onChange={this.handleChanges}
                     value={this.state.taskName}
                     name="taskName"
-                    onChange={this.handleChanges} 
                 />
-     <button>Add Task</button>
-     {/* <button onCLick={}>Clear completed</button> */}
-</form>
+         <button>Add Task</button>
+    </form>
+         <button onClick={this.props.clearCompleted}>Clear completed</button>
+            </div>
         );
     }
 }
