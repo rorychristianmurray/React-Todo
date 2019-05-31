@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../src/components/TodoComponents/Todo.css'
+
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
@@ -14,31 +16,67 @@ class App extends React.Component {
     };
   }
 
+  toggleItem = idNumber => {
+    // loop through this.state.taskList
+    // find the item the user clicked on
+    // toggle the boolean operator on the purchased property
+
+    const banana = this.state.taskList.map(task => {
+      if (task.idNumber === idNumber) {
+        return {
+          ...task,
+          completed: !task.completed
+        };
+      } else {
+        return task;
+      }
+    })
+
+    this.setState({taskList: banana})
+
+  };
+
+  clearCompleted = event => {
+    /// loop through this.state.taskList
+    // find the items that have className="completed"
+    // filter them from taskList and return new array without them
+    console.log('is this working')
+    event.preventDefault();
+
+    this.setState({
+      taskList: this.state.taskList.filter(task => !task.completed)
+    });
+  };
+
   addTask = taskName => {
-    if(!taskName) return alert("enter todo plz")
+    // check for empty input and return alert if blank
+    // if(!taskName) return alert("enter todo plz")
+    // add an task from the form to the list`
     const newTask = {
       taskName,
       idNumber: Date.now(),
       completed: false
     };
-    this.setState({
-      taskList: [...this.state.taskList, newTask], //New array with an added task
+
+    this.setState(prevState => {
+      return {
+        taskList: [...prevState.taskList, newTask]
+      };
     });
   }; 
 
-
-
-//   this.setState({taskName: event.target.value});
-// };
-
   render() {
-    console.log(this.state.name);
     return (   
       <div className='App'>
-        <h2>Welcome to your Todo Nightmare!</h2>
-        <TodoList taskList={this.state.taskList}/>
-
-      <TodoForm addTask={this.addTask}/>
+        <h2 className="header">Do this.</h2>
+        <TodoList 
+          taskList={this.state.taskList}
+          toggleItem={this.toggleItem}
+          />
+      <TodoForm 
+      addTask={this.addTask}
+      clearCompleted={this.clearCompleted}
+      />
       </div>
     );
   }

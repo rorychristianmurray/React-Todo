@@ -20,20 +20,32 @@ class TodoForm extends Component {
           this.setState({taskName: ""})
       }
 
+    //   clearCompleted = (event) => {
+    //       event.preventDefault();
+    //       this.setState({
+    //           newTask : this.state.tasks.filter(task => task.completed)
+    //       })
+    //   };
+
     render() {
         return (
-            <form onSubmit={this.addTask}>
+            <div className="form">
+
+            <form onSubmit={this.addTask} className="todo-form">
                 <input
                     placeholder="task name"
                     onChange={this.handleChanges}
                     value={this.state.taskName}
-                    name="taskName" 
+                    name="taskName"
                 />
-     <button>Add Task</button>
-     <button>Clear completed</button>
-</form>
+            <button className="btn">Add Task</button>
+            <button className="btn" onClick={this.props.clearCompleted}>Clear completed</button>
+         </form>
+
+            </div>
         );
     }
 }
+
 
 export default TodoForm;
