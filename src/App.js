@@ -51,7 +51,7 @@ class App extends React.Component {
   addTask = taskName => {
     // check for empty input and return alert if blank
     // if(!taskName) return alert("enter todo plz")
-    // add an task from the form to the list
+    // add an task from the form to the list`
     const newTask = {
       taskName,
       idNumber: Date.now(),
@@ -68,7 +68,7 @@ class App extends React.Component {
   render() {
     return (   
       <div className='App'>
-        <h2 className="header">Welcome to your Todo Nightmare!</h2>
+        <h2 className="header">Do this.</h2>
         <TodoList 
           taskList={this.state.taskList}
           toggleItem={this.toggleItem}

@@ -1,7 +1,44 @@
+.App {
+    max-width: 500px;
+    height: 200px;
+    margin: 0 auto;
+    background: dodgerblue;
+    border: 1px solid fuchsia;
+}
+
 .completed {
     text-decoration: line-through;
 }
 
 .item {
     /* color: red; */
+}
+
+.header {
+    color: red;
+    text-align: center;
+}
+
+.todo-form {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+
+}
+
+.btn {
+    background: white;
+    color: fuchsia;
+    border-radius: 25px;
+    margin: 15px;
+    height: 2rem;
+    width: 10rem;
+    font-size: 1rem;
+
 }

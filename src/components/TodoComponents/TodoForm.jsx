@@ -29,7 +29,7 @@ class TodoForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className="form">
 
             <form onSubmit={this.addTask} className="todo-form">
                 <input
@@ -38,9 +38,11 @@ class TodoForm extends Component {
                     value={this.state.taskName}
                     name="taskName"
                 />
-         <button>Add Task</button>
-    </form>
-         <button onClick={this.props.clearCompleted}>Clear completed</button>
+         </form>
+         <div className="buttons">
+            <button className="btn">Add Task</button>
+            <button className="btn" onClick={this.props.clearCompleted}>Clear completed</button>
+         </div>
             </div>
         );
     }
