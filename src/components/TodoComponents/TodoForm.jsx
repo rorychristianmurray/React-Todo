@@ -38,11 +38,10 @@ class TodoForm extends Component {
                     value={this.state.taskName}
                     name="taskName"
                 />
-         </form>
-         <div className="buttons">
             <button className="btn">Add Task</button>
             <button className="btn" onClick={this.props.clearCompleted}>Clear completed</button>
-         </div>
+         </form>
+
             </div>
         );
     }
